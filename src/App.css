@@ -20,8 +20,10 @@
   min-height: 10vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: center;
+  color: #ede9e8;
+  background-color: #24292F;
   font-size: calc(10px + 2vmin);
 }
 
