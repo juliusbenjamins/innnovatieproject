@@ -5,13 +5,14 @@ import Button from '@mui/material/Button';
 
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState("Heeft u s'nachts last van oorsuizen?")
-  const [currentAnswer, setCurrentAnswer] = useState("Ja");
+  const [currentAnswer, setCurrentAnswer] = useState();
   const [questionObject, setQuestionObject] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [yesFlag, setYesFlag] = useState(false);
+  const [noFlag, setNoFlag] = useState(false);
 
   // Sets the next question based on questionId
   const setQuestionById = (id) => {
-    console.log(id)
     for (let i = 0; i < questionObject.length; i++) {
       if (questionObject[i].id == id) {
         setCurrentQuestion(questionObject[i])
@@ -22,6 +23,7 @@ function App() {
 
   const handleNextClick = ({e}) => {
     var vervolg = currentQuestion.vervolgVraag
+    console.log(currentAnswer)
 
     // Case if questiontype is binary
     if (currentQuestion.antwoordType == "Binary"){
@@ -46,6 +48,8 @@ function App() {
         }
       }
     }
+    setYesFlag(false)
+    setNoFlag(false)
   }
 
   useEffect(() => {
@@ -68,29 +72,46 @@ function App() {
 		)
 	} else {
     return (
-      <div className="App">
+      <div className="App flex flex-col justify-between h-screen">
+
+        {/* Header */}
         <header className="App-header border -mb-12">
-          <h1 className="">Tinnitus Platform Titel</h1>
+          <h1 className="">Tinnitus platform innovatieproject</h1>
         </header>
 
-        <div className='flex items-center justify-center h-screen'>
+        {/* Body */}
+        <div className='flex items-center justify-center h-4/6'>
           <div className="border-1 font-semibold rounded-md shadow-md p-12 bg-white">
+            {/* Question */}
             <Question 
                 questionText={currentQuestion.vraag} 
                 answerType={currentQuestion.antwoordType}
                 setAnswerFunc={setCurrentAnswer}
-                clickHandler={handleNextClick}/>
-              <div className="mt-5">
-                {(currentQuestion.antwoordType == "Scale") && 
-                (<Button
+                clickHandler={handleNextClick}
+                yesFlag={yesFlag}
+                noFlag={noFlag}
+                setYesFlag={setYesFlag}
+                setNoFlag={setNoFlag}/>
+            {/* 'Volgende' button if Scale answer */}
+            <div className="mt-5">
+                {(currentQuestion.antwoordType != null) && 
+                <div className=''>
+                  <Button
                     variant="outlined"
+                    size="small"
                     onClick={(e) => handleNextClick(e)}>
                     Volgende
-                </Button>)
+                </Button>
+                </div>
                 }
-              </div>
+            </div>
           </div>
-      </div>
+        </div>
+
+        {/* Footer */}
+        <footer className='text-xs'>
+          Innovatieproject RadboudUMC 2023 | Door Wojtek, Dante, Savine en Julius
+        </footer> 
       </div>
     );
   }

@@ -20,48 +20,67 @@ const ScaleAnswer = ({setAnswerFunc}) => {
     )
   }
 
-const BinaryAnswer = ({setAnswerFunc, clickHandler}) => {
-    const miniHandler = (e, antwoord) => {
+  const BinaryAnswer = ({setAnswerFunc, yesFlag, noFlag, setYesFlag, setNoFlag}) => {
+    const handleClick = (e, antwoord) => {
+        if (antwoord == "Ja") {
+            setYesFlag(true)
+            setNoFlag(false)
+        } else if (antwoord == "Nee") {
+            setYesFlag(false)
+            setNoFlag(true)
+        }
         setAnswerFunc(antwoord)
-        clickHandler(e)
     }
 
     return (
         <Stack spacing={3} direction="row">
             <Button variant="contained"
-                    className="border-3"
-                    onClick={(e) => miniHandler(e, "Ja")}>
+                    size="large"
+                    color={yesFlag ? "success" : "primary"}
+                    onClick={(e) => handleClick(e, "Ja")}>
                 Ja
             </Button>
             <Button variant="contained"
-                    onClick={(e) => miniHandler(e, "Nee")}>
+                    size="large"
+                    color={noFlag ? "success" : "primary"}
+                    onClick={(e) => handleClick(e, "Nee")}>
                 Nee
             </Button>
         </Stack>
     );  
 };
 
-const Answer = ({ answerType, setAnswerFunc, clickHandler}) => {
-    if (answerType == "Binary") {
-        return <BinaryAnswer setAnswerFunc={setAnswerFunc} 
-                             clickHandler={clickHandler}/> 
-    } else if (answerType == "Scale") {
-        return <ScaleAnswer setAnswerFunc={setAnswerFunc}/>
+const Answer = (props) => {
+    if (props.answerType == "Binary") {
+        return <BinaryAnswer setAnswerFunc={props.setAnswerFunc} 
+                             clickHandler={props.clickHandler}
+                             yesFlag={props.yesFlag}
+                             noFlag={props.noFlag}
+                             setYesFlag={props.setYesFlag}
+                             setNoFlag={props.setNoFlag}/>
+    } else if (props.answerType == "Scale") {
+        return <ScaleAnswer setAnswerFunc={props.setAnswerFunc}/>
     } else {
         return "Geen Antwoord Type"
     }
 };
 
-export const Question = ({questionText, answerType, setAnswerFunc, clickHandler}) => {
+export const Question = (props) => {
     return (
         <div>
-            <div className="mb-5">
-                {questionText}
+            <div className="my-5">
+                {props.questionText}
             </div>
             <div className="flex items-center justify-center">
-                <Answer answerType={answerType}
-                setAnswerFunc={setAnswerFunc}
-                clickHandler={clickHandler}/>
+            {props.answerType !== null &&
+                <Answer answerType={props.answerType}
+                setAnswerFunc={props.setAnswerFunc}
+                clickHandler={props.clickHandler}
+                yesFlag={props.yesFlag}
+                noFlag={props.noFlag}
+                setYesFlag={props.setYesFlag}
+                setNoFlag={props.setNoFlag}/>
+            }
             </div>
         </div>  
     );
