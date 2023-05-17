@@ -1,0 +1,100 @@
+{
+    "vragen": [
+        {
+            "id": "GeluidenZoals",
+            "vraag": "Hoort u geluiden zoals piepen, zoemen (oorsuizen) die niet vanuit de omgeving afkomstig zijn?",
+            "antwoordType": "Binary",
+            "vervolgVraag": [["Ja", "DagelijksLeven"], ["Nee", "VakerHardeGeluiden"]]
+        },
+        {
+            "id": "VakerHardeGeluiden",
+            "vraag": "Heeft u vaker te maken met harde geluiden? (Op werk, bij het uitgaan, bij een festival)",
+            "antwoordType": "Binary",
+            "vervolgVraag": [["Ja", "Advies3"], ["Nee", "Advies3"]]
+        },
+        {
+            "id": "DagelijksLeven",
+            "vraag": "Hoe erg beïnvloeden de geluiden uw dagelijks leven?",
+            "antwoordType": "Scale",
+            "vervolgVraag": [[["<", 5], "Advies4"], [[">", 4], "KlachtenDokter"]]
+        },
+        {
+            "id": "KlachtenDokter",
+            "vraag": "Bent u voor deze klachten naar een dokter geweest?",
+            "antwoordType": "Binary",
+            "vervolgVraag": [["Ja", "DiagnoseTinnitus"], ["Nee", "Advies2"]]
+        },
+        {
+            "id": "DiagnoseTinnitus",
+            "vraag": "Is er een diagnose tinnitus bij u vastgesteld?",
+            "antwoordType": "Binary",
+            "vervolgVraag": [["Ja", "DokterVoldoendeAdvies"], ["Nee", "Advies5"]]
+        },
+        {
+            "id": "DokterVoldoendeAdvies",
+            "vraag": "Heeft u bij de dokter voldoende advies gekregen voor het omgaan met uw Tinnitus?",
+            "antwoordType": "Binary",
+            "vervolgVraag": [["Ja", "TinnitusNachtrust"], ["Nee", "Advies1b"]]
+        },
+        {
+            "id": "TinnitusNachtrust",
+            "vraag": "Heeft de tinnitus invloed op uw nachtrust?",
+            "antwoordType": "Binary",
+            "vervolgVraag": [["Ja", "Depressie"], ["Nee", "AdviesToevoegen"]]
+        },
+        {
+            "id": "Depressie",
+            "vraag": "Heeft u ooit depressieve gevoelens ervaren als gevolg van uw tinnitus?",
+            "antwoordType": "Binary",
+            "vervolgVraag": [["Ja", "AdviesToevoegen"], ["Nee", "Stress"]]
+        },
+        {
+            "id": "Stress",
+            "vraag": "Ervaart u stress als gevolg van het oorsuizen?",
+            "antwoordType": "Binary",
+            "vervolgVraag": [["Ja", "AdviesToevoegen"], ["Nee", "Concentreren"]]
+        },
+        {
+            "id": "Concentreren",
+            "vraag": "Heeft u moeite zich te concentreren als gevolg van de tinnitus?",
+            "antwoordType": "Binary",
+            "vervolgVraag": [["Ja", "AdviesToevoegen"], ["Nee", "AdviesToevoegen"]]
+        },
+        {
+            "id": "AdviesToevoegen",
+            "vraag": "Hier moet nog een advies komen te staan",
+            "antwoordType": null,
+            "vervolgVraag": null
+        },
+        {
+            "id": "Advies1b",
+            "vraag": "Informeer bij uw huisarts over de mogelijkheden tot het zoeken van een psycholoog te zoeken. Als alternatief bestaan er zelfhulpboeken E-health modules (link naar boek en therapieland).",
+            "antwoordType": null,
+            "vervolgVraag": null
+        },
+        {
+            "id": "Advies2",
+            "vraag": "Advies om naar huisarts te gaan. Eventueel kan er geinformeerd worden naar een tinnitus onderzoek bij een KNO-arts.",
+            "antwoordType": null,
+            "vervolgVraag": null
+        },
+        {
+            "id": "Advies4",
+            "vraag": "Wel oorsuizen, weinig last. Adviezen m.b.t. wat te doen als er klachten toenemen.",
+            "antwoordType": null,
+            "vervolgVraag": null
+        },
+        {
+            "id": "Advies3",
+            "vraag": "Algemene adviezen, ter preventie van tinnitus. O.a. draag oordopjes.",
+            "antwoordType": null,
+            "vervolgVraag": null
+        },
+        {
+            "id": "Advies5",
+            "vraag": "Er is geen tinnitus diagnose gesteld, maar duidelijk subjectief ervaren oorsuizen. Informeer naar mogelijkheden van een second opinion of doorverwijzing naar een psycholoog/KNO-arts.",
+            "antwoordType": null,
+            "vervolgVraag": null
+        }
+    ]
+}
