@@ -3,6 +3,10 @@ import { Question } from './Question';
 import { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 
+function refreshPage() {
+  window.location.reload(false);
+}
+
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState("Heeft u s'nachts last van oorsuizen?")
   const [currentAnswer, setCurrentAnswer] = useState();
@@ -73,17 +77,21 @@ function App() {
     )
   } else {
     return (
-      <div className="App flex flex-col justify-between h-screen">
+      <div className="App flex flex-col justify-between h-screen overflow-auto">
 
         {/* Header */}
         <header className="App-header pl-2">
-          <h1 className="text-white drop-shadow text-2xl font-semibold">Tinnitus Platform</h1>
+            <a className="text-white drop-shadow text-2xl font-semibold" 
+            href='#'>
+              <h1 className="text-white drop-shadow text-2xl font-semibold" 
+              onClick={refreshPage}>Tinnitus Platform</h1>
+            </a>
           <p className="text-sm">Innovatieproject Radboud Universiteit</p>
         </header>
 
         {/* Body */}
-        <div className='flex items-center justify-center overflow-auto'>
-          <div className="border-1 rounded-md shadow-md py-10 px-6 bg-white">
+        <div className='flex items-center justify-center m-4'>
+          <div className="border-1 rounded-md shadow-md py-6 px-3 bg-white">
             {/* Question */}
             {!startQuestionnaire 
             ? (<div className='text-justify p-10 max-w-xl'>
@@ -128,7 +136,7 @@ function App() {
         </div>
 
         {/* Footer */}
-        <footer className='text-xs'>
+        <footer className='text-xs mx-5'>
           Innovatieproject Radboud Universiteit 2023 | Door Wojtek, Dante, Savine en Julius
         </footer>
       </div>
