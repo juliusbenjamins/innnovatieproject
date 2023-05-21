@@ -2,6 +2,18 @@ import './App.css';
 import { Question } from './Question';
 import { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#f9e45b',
+    },
+    secondary: {
+      main: '#6db784',
+    },
+  },
+});
 
 function refreshPage() {
   window.location.reload(false);
@@ -82,15 +94,15 @@ function App() {
         {/* Header */}
         <header className="App-header p-4">
           <div className=''>
-          <a className="text-2xl font-semibold" 
-            href='#'>
-              <h1 className="text-4xl font-semibold" 
-              onClick={refreshPage}>Tinnitus Platform</h1>
+            <a className="text-2xl font-semibold"
+              href='#'>
+              <h1 className="text-4xl font-semibold"
+                onClick={refreshPage}>Tinnitus Platform</h1>
             </a>
-          <p className="text-lg">Innovatieproject Radboud Universiteit</p>
+            <p className="text-lg">Innovatieproject Radboud Universiteit</p>
           </div>
-          <div className='Over-ons text-xl'>
-            <mark className="Over-ons px-2 font-semibold">Over ons</mark>
+          <div className='text-xl mt-2'>
+            <mark onClick={() => alert("Moet nog gemaakt worden")} className="Over-ons px-2 font-semibold">Over ons</mark>
           </div>
         </header>
 
@@ -99,69 +111,77 @@ function App() {
           <div className="App-questions border-1 rounded-lg py-6 px-3">
             <div className='Inner-questions mx-5 my-3 p-1'>
               {/* Question */}
-              {!startQuestionnaire 
-              ? (<div className='text-justify p-5 max-w-xl'>
-                {/* First part intro */}
-                <h1 className='text-left text-black text-xl font-semibold mb-2'>
-                  <mark className='Mark-title px-1'>De Uitdaging</mark>
-                </h1>
-                <p className='mb-10 text-md'>
-                In onze omgeving valt ons op dat veel mensen tinnitus hebben, 
-                maar niet weten dat er ook behandelingsmogelijkheden zijn. 
-                Ze balen en hebben er last van, maar hebben ook het idee dat 
-                ze er maar mee moeten leven. De uitdaging waarmee wij aan de 
-                slag gaan is daarom hoe we personen bewuster kunnen maken van 
-                de mogelijkheden tot de behandeling van tinnitus.  
-                </p>
+              {!startQuestionnaire
+                ? (<div className='text-justify max-w-xl'>
+                  {/* First part intro */}
+                  <h1 className='text-left text-black text-xl font-semibold mb-2'>
+                    <mark className='Mark-title p-1'>De Uitdaging</mark>
+                  </h1>
+                  <p className='mb-10 text-md'>
+                    In onze omgeving valt ons op dat veel mensen tinnitus hebben,
+                    maar niet weten dat er ook behandelingsmogelijkheden zijn.
+                    Ze balen en hebben er last van, maar hebben ook het idee dat
+                    ze er maar mee moeten leven. De uitdaging waarmee wij aan de
+                    slag gaan is daarom hoe we personen bewuster kunnen maken van
+                    de mogelijkheden tot de behandeling van tinnitus.
+                  </p>
 
-                {/* Second part intro */}
-                <h2 className='text-right text-black text-xl font-semibold mb-2'>
-                  <mark className='Mark-title px-1'>Tinnitus in het kort</mark>
-                </h2> 
-                <p className='mb-10 text-md'>
-                Patiënten met tinnitus horen een geluid dat gecreëerd wordt van
-                 binnenuit. Er zijn verschillende soorten geluiden, de meest 
-                 voorkomende zijn: gebrom, ruis en een piep. Daarnaast verschilt 
-                 per persoon en per moment de ernst van deze klachten. 
-                Tinnitus wordt veroorzaakt door degeneratie van haarcellen die 
-                zich in het slakkenhuis bevinden. Het gevolg hiervan is dat de 
-                signaaltransductie van en naar de hersenen verstoord raakt. Het 
-                is hierdoor mogelijk dat er verkeerde signalen worden doorgegeven. 
-                De hersenen proberen dus de functie van de haarcellen te compenseren, 
-                wat zich kan uiten in oorsuizen.
-                </p>
+                  {/* Second part intro */}
+                  <h2 className='text-right text-black text-xl font-semibold mb-2'>
+                    <mark className='Mark-title p-1'>Tinnitus in het kort</mark>
+                  </h2>
+                  <p className='mb-10 text-md'>
+                    Patiënten met tinnitus horen een geluid dat gecreëerd wordt van
+                    binnenuit. Er zijn verschillende soorten geluiden, de meest
+                    voorkomende zijn: gebrom, ruis en een piep. Daarnaast verschilt
+                    per persoon en per moment de ernst van deze klachten.
+                    Tinnitus wordt veroorzaakt door degeneratie van haarcellen die
+                    zich in het slakkenhuis bevinden. Het gevolg hiervan is dat de
+                    signaaltransductie van en naar de hersenen verstoord raakt. Het
+                    is hierdoor mogelijk dat er verkeerde signalen worden doorgegeven.
+                    De hersenen proberen dus de functie van de haarcellen te compenseren,
+                    wat zich kan uiten in oorsuizen.
+                  </p>
 
-                {/* Start questionnaire button */}
-                <div className='text-center'>
-                  <Button variant='outlined'
-                          onClick={() => setStartQuestionnaire(true)}>Start Vragenlijst</Button>
-                </div>
-              </div>)
-              : (<div className='max-w-xl'>
-                  <Question 
-                    questionText={currentQuestion.vraag} 
+                  {/* Start questionnaire button */}
+                  <div className='text-center'>
+                    <ThemeProvider theme={theme}>
+                      <Button 
+                        variant='contained'
+                        onClick={() => setStartQuestionnaire(true)}>
+                          Start Vragenlijst
+                      </Button>
+                    </ThemeProvider>
+                  </div>
+                </div>)
+                : (<div className='max-w-xl'>
+                  <Question
+                    questionText={currentQuestion.vraag}
                     answerType={currentQuestion.antwoordType}
                     setAnswerFunc={setCurrentAnswer}
                     clickHandler={handleNextClick}
                     yesFlag={yesFlag}
                     noFlag={noFlag}
                     setYesFlag={setYesFlag}
-                    setNoFlag={setNoFlag}/>
-                <div className="mt-5">
-                    {(currentQuestion.antwoordType != null) && 
-                    (<div className=''>
-                      <Button
-                        variant="outlined"
-                        size="small"
-                        onClick={(e) => handleNextClick(e)}>
-                        Volgende
-                    </Button>
-                    </div>)}
-                </div>
-              </div>)}
+                    setNoFlag={setNoFlag} />
+                  <div className="mt-5">
+                    {(currentQuestion.antwoordType != null) &&
+                      (<div className=''>
+                        <ThemeProvider theme={theme}>
+                          <Button
+                            color='primary'
+                            variant="contained"
+                            size="small"
+                            onClick={(e) => handleNextClick(e)}>
+                            Volgende
+                          </Button>
+                        </ThemeProvider>
+                      </div>)}
+                  </div>
+                </div>)}
             </div>
           </div>
-        </div>
+        </div>        
 
         {/* Footer */}
         <footer className='App-footer text-xs px-5 py-3'>

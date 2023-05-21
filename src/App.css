@@ -4,12 +4,16 @@
   color: #ffffff;
   background-color: #98D4D2;
   min-height: 100vh;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Lora', serif;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.MuiButton-contained  {
+  font-family: 'Lora', serif !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -20,9 +24,6 @@
 
 .App-header {
   min-height: 10vh;
-  display: flex;
-  flex-direction: row;
-  align-items: start;
   color: #000000;
   background-color: #ffffff;
   font-size: calc(10px + 2vmin);
@@ -30,13 +31,13 @@
 
 .Over-ons {
   margin-top: 10px;
-  position: fixed;
+  position: inherit;
   right: 0;
 }
 
 @media only screen and (max-height: 700px) {
   .App-header {
-    min-height: 22vh;
+    min-height: 20vh;
   }
 }
 
@@ -44,7 +45,7 @@
   .App-header {
     flex-direction: column;
     align-items: center;
-    min-height: 17vh;
+    min-height: 15vh;
   }
 
   .Over-ons {
@@ -55,8 +56,7 @@
 
 @media only screen and (max-width: 400px) {
   .App-header {
-
-    min-height: 22vh;
+    min-height: 18vh;
   }
 
 }
@@ -71,20 +71,23 @@
   background-color: #6db784;
 }
 
+/* Slider */
+.MuiSlider-thumb {
+  color: #ffffff;
+}
+
+.MuiSlider-rail {
+  color: #000000;
+}
+
+.MuiSlider-track {
+  color: #6db784;
+}
+
 .Over-ons {
   color: #ffffff;
   background-color: #f9e45b;
 }
-
-/* .Inner-questions {
-  color: #183a1d;
-  background-color: #f5cac2;
-} */
-
-/* .App-questions {
-  color: #183a1d;
-  background-color: #303179;
-} */
 
 .App-link {
   color: #61dafb;
