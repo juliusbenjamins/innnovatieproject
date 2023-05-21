@@ -1,8 +1,10 @@
+
 .App {
   text-align: center;
-  color: #787878;
-  background-color: #F1F1F1;
+  color: #ffffff;
+  background-color: #98D4D2;
   min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
 }
 
 .App-logo {
@@ -19,13 +21,70 @@
 .App-header {
   min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: start;
-  justify-content: center;
-  color: #ede9e8;
-  background-color: #24292F;
+  color: #000000;
+  background-color: #ffffff;
   font-size: calc(10px + 2vmin);
 }
+
+.Over-ons {
+  margin-top: 10px;
+  position: fixed;
+  right: 0;
+}
+
+@media only screen and (max-height: 700px) {
+  .App-header {
+    min-height: 22vh;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .App-header {
+    flex-direction: column;
+    align-items: center;
+    min-height: 17vh;
+  }
+
+  .Over-ons {
+    margin-top: 15px;
+    position: inherit;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .App-header {
+
+    min-height: 22vh;
+  }
+
+}
+
+.App-footer {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.Mark-title {
+  color: #ffffff;
+  background-color: #6db784;
+}
+
+.Over-ons {
+  color: #ffffff;
+  background-color: #f9e45b;
+}
+
+/* .Inner-questions {
+  color: #183a1d;
+  background-color: #f5cac2;
+} */
+
+/* .App-questions {
+  color: #183a1d;
+  background-color: #303179;
+} */
 
 .App-link {
   color: #61dafb;
