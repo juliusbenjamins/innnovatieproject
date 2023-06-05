@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/innnovatieproject/static/css/main.920680ed.css",
-    "main.js": "/innnovatieproject/static/js/main.b9fcf904.js",
+    "main.js": "/innnovatieproject/static/js/main.d11f5675.js",
     "static/js/787.7b222385.chunk.js": "/innnovatieproject/static/js/787.7b222385.chunk.js",
     "index.html": "/innnovatieproject/index.html",
     "main.920680ed.css.map": "/innnovatieproject/static/css/main.920680ed.css.map",
-    "main.b9fcf904.js.map": "/innnovatieproject/static/js/main.b9fcf904.js.map",
+    "main.d11f5675.js.map": "/innnovatieproject/static/js/main.d11f5675.js.map",
     "787.7b222385.chunk.js.map": "/innnovatieproject/static/js/787.7b222385.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.920680ed.css",
-    "static/js/main.b9fcf904.js"
+    "static/js/main.d11f5675.js"
   ]
 }
